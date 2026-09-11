@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import menuItems from "../data/menu";
 
 function SignatureDishes() {
@@ -104,8 +105,8 @@ function SignatureDishes() {
           transition={{ duration: 0.8 }}
           className="mt-16 flex justify-center border-t border-[#11110f]/10 pt-8"
         >
-          <a
-            href="#reservation"
+          <Link
+            to="/menu"
             className="group flex items-center gap-3 border border-[#11110f] px-7 py-4 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#11110f] hover:text-[#f4efe5]"
           >
             Discover the Full Menu
@@ -114,7 +115,7 @@ function SignatureDishes() {
               strokeWidth={1.5}
               className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import heroImage from "../assets/images/Hero.jpg";
 
 function Hero() {
@@ -66,8 +67,8 @@ function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <a
-                href="#menu"
+              <Link
+                to="/menu"
                 className="group flex items-center gap-3 bg-[#f4efe5] px-6 py-4 text-xs font-medium uppercase tracking-[0.18em] text-[#11110f] transition-all duration-300 hover:bg-[#c9a15a]"
               >
                 Explore Menu
@@ -76,14 +77,14 @@ function Hero() {
                   strokeWidth={1.5}
                   className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
-              </a>
+              </Link>
 
-              <a
-                href="#reservation"
+              <Link
+                to="/reservation"
                 className="flex items-center gap-3 border border-[#f4efe5]/40 px-6 py-4 text-xs font-medium uppercase tracking-[0.18em] text-[#f4efe5] backdrop-blur-sm transition-all duration-300 hover:border-[#c9a15a] hover:text-[#c9a15a]"
               >
                 Reserve a Table
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
