@@ -40,7 +40,7 @@ function Gallery() {
         >
           <div>
             <div className="flex items-center gap-4">
-              <span className="h-px w-10 bg-[#c9a15a]" />
+              <span className="ember-rule h-px w-10 bg-[#c9a15a]" />
 
               <p className="text-xs uppercase tracking-[0.3em] text-[#8b6b32]">
                 The Experience
@@ -71,13 +71,17 @@ function Gallery() {
             transition={{ duration: 0.8 }}
             className="group relative overflow-hidden md:row-span-2"
           >
-            <img
+            <motion.img
               src={galleryImages[0].src}
               alt={galleryImages[0].alt}
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="h-full min-h-[450px] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
 
             <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10" />
+
+            <span aria-hidden="true" className="image-sheen" />
 
             <div className="absolute bottom-6 left-6">
               <p className="text-[10px] uppercase tracking-[0.25em] text-white/70">
@@ -100,15 +104,19 @@ function Gallery() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="group relative overflow-hidden"
           >
-            <img
+            <motion.img
               src={galleryImages[1].src}
               alt={galleryImages[1].alt}
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
 
             <span className="absolute right-5 top-5 text-xs tracking-[0.2em] text-white drop-shadow-md">
               01
             </span>
+
+            <span aria-hidden="true" className="image-sheen" />
           </motion.div>
 
           <motion.div
@@ -118,15 +126,19 @@ function Gallery() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="group relative overflow-hidden"
           >
-            <img
+            <motion.img
               src={galleryImages[2].src}
               alt={galleryImages[2].alt}
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
 
             <span className="absolute right-5 top-5 text-xs tracking-[0.2em] text-white drop-shadow-md">
               02
             </span>
+
+            <span aria-hidden="true" className="image-sheen" />
           </motion.div>
 
           <motion.div
@@ -136,9 +148,11 @@ function Gallery() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="group relative overflow-hidden md:col-span-2"
           >
-            <img
+            <motion.img
               src={galleryImages[3].src}
               alt={galleryImages[3].alt}
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="aspect-[16/7] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
 
@@ -158,6 +172,8 @@ function Gallery() {
             <span className="absolute right-5 top-5 text-xs tracking-[0.2em] text-white drop-shadow-md">
               03
             </span>
+
+            <span aria-hidden="true" className="image-sheen" />
           </motion.div>
         </div>
 

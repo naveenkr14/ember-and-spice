@@ -37,7 +37,7 @@ function Testimonials() {
         >
           <div>
             <div className="flex items-center gap-4">
-              <span className="h-px w-10 bg-[#c9a15a]" />
+              <span className="ember-rule h-px w-10 bg-[#c9a15a]" />
 
               <p className="text-xs uppercase tracking-[0.3em] text-[#c9a15a]">
                 Guest Experiences

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Link } from "react-router-dom";
 
 import fullMenu from "../data/fullMenu";
@@ -96,11 +96,12 @@ function MenuPage() {
         <div className="mx-auto max-w-7xl px-6 py-5 lg:px-10">
           <div className="flex flex-wrap justify-center gap-3">
             {filters.map((filter) => (
-              <button
+              <motion.button
                 key={filter}
                 type="button"
                 onClick={() => setActiveFilter(filter)}
                 aria-pressed={activeFilter === filter}
+                whileTap={{ scale: 0.94 }}
                 className={`rounded-full border px-5 py-2.5 text-xs uppercase tracking-[0.14em] transition-all duration-300 sm:px-7 ${
                   activeFilter === filter
                     ? "border-[#c9a15a] bg-[#c9a15a] text-[#241713]"
@@ -108,7 +109,7 @@ function MenuPage() {
                 }`}
               >
                 {filter}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -116,18 +117,25 @@ function MenuPage() {
 
       {/* Menu */}
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-        <div className="space-y-24">
-          {visibleSections.map((section, sectionIndex) => (
-            <motion.section
-              key={section.id}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.08 }}
-              transition={{
-                duration: 0.6,
-                delay: sectionIndex * 0.03,
-              }}
-            >
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -18 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            className="space-y-24"
+          >
+            {visibleSections.map((section, sectionIndex) => (
+              <motion.section
+                key={section.id}
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: sectionIndex * 0.06,
+                }}
+              >
               {/* Section Heading */}
               <div className="border-t border-[#c9a15a]/20 pt-8">
                 <div className="max-w-2xl">
@@ -175,9 +183,10 @@ function MenuPage() {
                   </article>
                 ))}
               </div>
-            </motion.section>
-          ))}
-        </div>
+              </motion.section>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </section>
 
       {/* Footer CTA */}

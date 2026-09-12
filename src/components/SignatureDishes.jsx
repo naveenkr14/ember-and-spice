@@ -18,7 +18,7 @@ function SignatureDishes() {
           className="grid gap-8 md:grid-cols-[1fr_2fr] md:items-end"
         >
           <div className="flex items-center gap-4">
-            <span className="h-px w-10 bg-[#c9a15a]" />
+            <span className="ember-rule h-px w-10 bg-[#c9a15a]" />
 
             <p className="text-xs uppercase tracking-[0.3em] text-[#8b6b32]">
               The Menu
@@ -49,19 +49,32 @@ function SignatureDishes() {
               key={item.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                y: -12,
+                rotateX: 2,
+                rotateY: -2,
+                transition: { duration: 0.35, delay: 0 },
+              }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{
                 duration: 0.8,
                 delay: index * 0.12,
               }}
-              className={
+              style={{ transformPerspective: 1000 }}
+              className={`transform-gpu ${
                 index === 2 ? "md:col-span-2 md:mx-auto md:max-w-2xl" : ""
-              }
+              }`}
             >
-              <div className="group relative overflow-hidden">
-                <img
+              <motion.div
+                initial="rest"
+                whileHover="hover"
+                className="group relative overflow-hidden transition-shadow duration-500 group-hover:shadow-[0_24px_60px_-24px_rgba(17,17,15,0.6)]"
+              >
+                <motion.img
                   src={item.image}
                   alt={item.name}
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
                   className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
@@ -71,10 +84,17 @@ function SignatureDishes() {
                   {item.number}
                 </span>
 
-                <div className="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#f4efe5] opacity-0 transition-all duration-500 group-hover:opacity-100">
+                <motion.div
+                  variants={{
+                    rest: { opacity: 0, scale: 0.7, rotate: -20 },
+                    hover: { opacity: 1, scale: 1, rotate: 0 },
+                  }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#f4efe5]"
+                >
                   <ArrowUpRight size={17} strokeWidth={1.5} />
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               <div className="mt-5">
                 <div className="flex items-baseline justify-between gap-6">

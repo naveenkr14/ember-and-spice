@@ -30,3 +30,59 @@ body {
   background-color: var(--color-gold);
   color: var(--color-background);
 }
+
+@keyframes ember-rule {
+  from {
+    transform: scaleX(0);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.ember-rule {
+  transform-origin: left;
+  animation: ember-rule 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.image-sheen {
+  position: absolute;
+  inset-block: 0;
+  left: -38%;
+  width: 26%;
+  transform: skewX(-18deg);
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.24),
+    transparent
+  );
+  opacity: 0;
+  transition:
+    left 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease;
+}
+
+.group:hover > .image-sheen {
+  left: 122%;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

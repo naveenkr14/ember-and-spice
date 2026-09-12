@@ -22,7 +22,7 @@ function Reservation() {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-4">
-            <span className="h-px w-10 bg-[#11110f]" />
+            <span className="ember-rule h-px w-10 bg-[#11110f]" />
 
             <p className="text-xs uppercase tracking-[0.3em]">Reservations</p>
           </div>
